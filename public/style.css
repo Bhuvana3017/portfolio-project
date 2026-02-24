@@ -1,0 +1,164 @@
+/* ===== Base Styles ===== */
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+nav {
+  background: #007BFF;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between; /* move links to left, button to right */
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 20px; /* spacing between links */
+  transition: color 0.3s;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+nav a:hover { color: #ffd700; }
+
+#darkBtn {
+  padding: 4px 6px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: #fff;
+  color: #007BFF;
+  transition: all 0.3s;
+}
+
+#darkBtn:hover {
+  background-color: #ffd700;
+  color: #121212;
+}
+
+#darkBtn:hover {
+  background-color: #ffd700;
+  color: #121212;
+}
+
+#darkBtn:hover {
+  background-color: #ffd700;
+  color: #121212;
+}
+
+/* ===== Sections ===== */
+section {
+  padding: 80px 20px;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 4px solid #007BFF;
+}
+
+/* ===== Projects ===== */
+.project {
+  background: white;
+  margin: 25px auto;
+  padding: 25px;
+  width: 70%;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeIn 1s ease forwards;
+}
+
+.project:nth-child(1) { animation-delay: 0.4s; }
+.project:nth-child(2) { animation-delay: 0.7s; }
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Contact Form ===== */
+form {
+  margin-top: 30px;
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover { background-color: #0056b3; }
+
+/* ===== Dark Mode ===== */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode nav { background-color: #1f1f1f; }
+.dark-mode nav a { color: #ffffff; }
+.dark-mode #about,
+.dark-mode #projects,
+.dark-mode section { background-color: #181818; color: #ffffff; }
+.dark-mode .project { background-color: #1e1e1e; color: #ffffff; }
+.dark-mode input, .dark-mode textarea {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #555;
+}
+.dark-mode button { background-color: #333; color: #ffffff; }
+.dark-mode h1, .dark-mode h2, .dark-mode h3 { color: #ffffff; }

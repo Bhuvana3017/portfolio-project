@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bhuvana K Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button onclick="toggleDarkMode()" id="darkBtn">🌙</button>
+</nav>
+
+  <section id="about">
+    <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+    <h1>Hi, I'm Bhuvana K</h1>
+    <p>I am a Computer Science student learning Full Stack Development And Cloud Computing.</p>
+  </section>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+
+    <div class="project">
+      <h3>Portfolio Website</h3>
+      <p>A personal website built using HTML, CSS, Node.js and MySQL.</p>
+    </div>
+
+    <div class="project">
+      <h3>Student Management System</h3>
+      <p>A database project using MySQL to manage student records.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required><br>
+      <input type="email" id="email" placeholder="Your Email" required><br>
+      <textarea id="message" placeholder="Your Message" required></textarea><br>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      const response = await fetch("/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      const result = await response.text();
+      alert(result);
+    });
+  </script>
+</body>
+</html>
