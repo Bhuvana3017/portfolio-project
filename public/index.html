@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bhuvana K | Cloud & DevOps Engineer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -15,44 +14,54 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+    font-family:'Montserrat',sans-serif;
 }
 
 body{
-    background:#0f172a;
-    color:#e2e8f0;
+    background:linear-gradient(135deg,#0f172a,#1e1b4b,#0f172a);
+    color:white;
     scroll-behavior:smooth;
-    line-height:1.6;
 }
 
-/* Animated background */
-body::before{
+/* Floating animated blobs */
+body::before, body::after{
     content:"";
     position:fixed;
-    width:100%;
-    height:100%;
-    background: radial-gradient(circle at 20% 30%, #2563eb33, transparent 40%),
-                radial-gradient(circle at 80% 70%, #7c3aed33, transparent 40%);
+    width:400px;
+    height:400px;
+    background:radial-gradient(circle,#38bdf8,#7c3aed);
+    border-radius:50%;
+    filter:blur(150px);
+    opacity:0.3;
+    animation:move 10s infinite alternate ease-in-out;
     z-index:-1;
+}
+
+body::after{
+    right:0;
+    animation-delay:5s;
+}
+
+@keyframes move{
+    from{transform:translate(-50px,-50px);}
+    to{transform:translate(50px,50px);}
 }
 
 /* Navbar */
 nav{
     display:flex;
     justify-content:space-between;
-    align-items:center;
     padding:20px 8%;
     position:fixed;
     width:100%;
-    background:rgba(15,23,42,0.8);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,0.4);
     z-index:1000;
 }
 
 .logo{
-    font-weight:700;
-    font-size:20px;
+    font-weight:900;
+    font-size:22px;
     color:#38bdf8;
 }
 
@@ -62,13 +71,13 @@ nav ul{
 }
 
 nav ul li{
-    margin-left:30px;
+    margin-left:25px;
 }
 
 nav ul li a{
     text-decoration:none;
-    color:#cbd5e1;
-    font-weight:500;
+    color:white;
+    font-weight:700;
     transition:0.3s;
 }
 
@@ -79,63 +88,90 @@ nav ul li a:hover{
 /* Sections */
 section{
     padding:120px 8%;
+    animation:fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
 .section-title{
-    font-size:32px;
-    font-weight:700;
-    margin-bottom:20px;
+    font-size:34px;
+    font-weight:900;
+    margin-bottom:30px;
     color:#38bdf8;
 }
 
 /* Hero */
 .hero{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
     text-align:center;
     min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 
 .hero img{
-    width:160px;
+    width:170px;
     border-radius:50%;
+    border:5px solid #38bdf8;
+    box-shadow:0 0 30px #38bdf8;
     margin-bottom:20px;
-    border:4px solid #38bdf8;
+    transition:0.4s;
+}
+
+.hero img:hover{
+    transform:scale(1.08);
 }
 
 .hero h1{
-    font-size:40px;
-    font-weight:700;
-    margin-bottom:10px;
+    font-size:42px;
+    font-weight:900;
 }
 
 .hero p{
     font-size:18px;
-    color:#94a3b8;
+    color:#cbd5e1;
 }
 
-/* Glass Cards */
+/* Glass */
 .glass{
     background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.05);
     padding:40px;
     border-radius:20px;
-    margin-top:40px;
+    backdrop-filter:blur(15px);
 }
 
-/* Grid */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    margin-top:30px;
+/* Timeline */
+.timeline{
+    position:relative;
+    margin-left:20px;
+    border-left:3px solid #38bdf8;
 }
 
+.timeline-item{
+    margin:30px 0;
+    padding-left:25px;
+    position:relative;
+}
+
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-10px;
+    top:5px;
+    width:15px;
+    height:15px;
+    background:#38bdf8;
+    border-radius:50%;
+}
+
+/* Projects */
 .card{
     background:#1e293b;
-    padding:25px;
+    padding:20px;
     border-radius:15px;
     transition:0.3s;
 }
@@ -143,7 +179,7 @@ section{
 .card:hover{
     transform:translateY(-8px);
     background:#38bdf8;
-    color:#0f172a;
+    color:black;
 }
 
 /* Form */
@@ -151,20 +187,14 @@ form{
     display:flex;
     flex-direction:column;
     gap:15px;
-    margin-top:20px;
 }
 
 input,textarea{
     padding:12px;
     border-radius:10px;
-    border:1px solid rgba(255,255,255,0.1);
+    border:none;
     background:#1e293b;
     color:white;
-}
-
-input:focus,textarea:focus{
-    outline:none;
-    border-color:#38bdf8;
 }
 
 button{
@@ -172,25 +202,19 @@ button{
     border:none;
     border-radius:10px;
     background:#38bdf8;
-    color:#0f172a;
-    font-weight:600;
+    font-weight:900;
     cursor:pointer;
     transition:0.3s;
 }
 
 button:hover{
-    background:#0ea5e9;
+    box-shadow:0 0 20px #38bdf8;
 }
 
-#status{
-    margin-top:10px;
-}
+#status{margin-top:10px;}
 
-/* Responsive */
 @media(max-width:768px){
-    .hero h1{
-        font-size:28px;
-    }
+    .hero h1{font-size:28px;}
 }
 </style>
 </head>
@@ -198,27 +222,26 @@ button:hover{
 <body>
 
 <nav>
-    <div class="logo">BHUvana K</div>
+    <div class="logo">Bhuvana K</div>
     <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#journey">Journey</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#feedback">Contact</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
 
 <section class="hero">
     <img src="profile.jpg" alt="Bhuvana K">
     <h1>Bhuvana K</h1>
-    <p>Aspiring Cloud & DevOps Engineer | BCA Cloud Computing Student</p>
+    <p>Aspiring Cloud & DevOps Engineer</p>
 </section>
 
 <section id="about">
     <div class="section-title">About Me</div>
     <div class="glass">
-        Passionate about cloud technologies, DevOps automation, and scalable infrastructure.
-        Focused on AWS, containerization, CI/CD pipelines, and secure deployments.
+        BCA Cloud Computing student passionate about AWS, DevOps automation, containerization, and scalable cloud solutions.
     </div>
 </section>
 
@@ -231,22 +254,24 @@ button:hover{
 
 <section id="journey">
     <div class="section-title">Professional Journey</div>
-    <div class="grid">
-        <div class="card">Started Programming Journey</div>
-        <div class="card">Built Real-World Websites</div>
-        <div class="card">Cloud & DevOps Certifications</div>
-        <div class="card">Working on Deployment Projects</div>
+    <div class="timeline glass">
+        <div class="timeline-item"><b>2023:</b> Started Programming</div>
+        <div class="timeline-item"><b>2024:</b> Built Responsive Websites</div>
+        <div class="timeline-item"><b>2025:</b> Completed Cloud Certifications</div>
+        <div class="timeline-item"><b>2026:</b> Working on DevOps Projects</div>
     </div>
 </section>
 
 <section id="projects">
     <div class="section-title">Projects</div>
     <div class="glass">
-        <div class="card">Modern Responsive Website using HTML, CSS, JS</div>
+        <div class="card">
+            Modern Cloud-Ready Website using HTML, CSS, JavaScript & Deployment
+        </div>
     </div>
 </section>
 
-<section id="feedback">
+<section id="contact">
     <div class="section-title">Contact Me</div>
     <div class="glass">
         <form id="feedbackForm">
@@ -268,42 +293,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const { createClient } = supabase;
     const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
-    const form = document.getElementById("feedbackForm");
-    const status = document.getElementById("status");
-
-    form.addEventListener("submit", async (e) => {
+    document.getElementById("feedbackForm").addEventListener("submit", async (e) => {
         e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
 
         const { error } = await supabaseClient
             .from("feedback")
-            .insert([{
-                name: name.value,
-                email: email.value,
-                message: message.value
-            }]);
+            .insert([{ name, email, message }]);
 
-        if (error) {
-            status.textContent = error.message;
-            status.style.color = "red";
-        } else {
-            status.textContent = "Message sent successfully!";
-            status.style.color = "#38bdf8";
-            form.reset();
-        }
+        document.getElementById("status").textContent =
+            error ? error.message : "Message Sent Successfully!";
     });
 
     new Chart(document.getElementById("skillsChart"), {
-        type:"bar",
-        data:{
-            labels:["HTML","CSS","JavaScript","Cloud","DevOps"],
-            datasets:[{
-                data:[85,80,75,70,65],
-                backgroundColor:"#38bdf8"
+        type: "pie",
+        data: {
+            labels: ["HTML","CSS","JavaScript","Cloud","DevOps"],
+            datasets: [{
+                data: [25,20,20,20,15],
+                backgroundColor: [
+                    "#38bdf8",
+                    "#6366f1",
+                    "#7c3aed",
+                    "#0ea5e9",
+                    "#22d3ee"
+                ]
             }]
-        },
-        options:{
-            plugins:{legend:{display:false}},
-            scales:{y:{beginAtZero:true,max:100}}
         }
     });
 
