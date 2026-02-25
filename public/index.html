@@ -294,11 +294,11 @@ button:hover{
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-    const supabaseUrl = "https://raxzuafgtiyqykoftjqf.supabase.co/";
+    const supabaseUrl = "https://raxzuafgtiyqykoftjqf.supabase.co";
     const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJheHp1YWZndGl5cXlrb2Z0anFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODc5OTUsImV4cCI6MjA4NzU2Mzk5NX0.9pEVBw4ctMEepgVlmAokmCfb-7dLBcrHiJ97CCWnxo0";
 
-    const { createClient } = supabase;
-    const supabaseClient = createClient(supabaseUrl, supabaseKey);
+    const supabaseClient= supabase.createClient(supabaseUrl,supabaseKey);
+    
 
     document.getElementById("feedbackForm").addEventListener("submit", async (e) => {
         e.preventDefault();
